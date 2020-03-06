@@ -1,0 +1,8 @@
+git push - wysyłanie
+git pull - ściąganie
+git branch nazwa -nowy branch
+git checkout nazwa -zmiana brancha
+git branch -d nazwa -usuwanie brancha
+git status - wypisanie zmienionych plików
+git add . -akceptacja plików
+git commit -m "komentarz" - wstawienie na brancha
