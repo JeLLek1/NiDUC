@@ -5,7 +5,9 @@
 #include <cmath>
 #include <bitset>
 
+
 #include "tripling.cpp"
+#include "bsc.cpp"
 
 Menu::Menu(){
 	this->parity = 0;
@@ -44,6 +46,8 @@ void Menu::display(){
 
 	this->chanel();
 
+	this->showValuesByte();
+
 }
 
 void Menu::loadValues(){
@@ -57,6 +61,7 @@ void Menu::loadValues(){
 }
 
 void Menu::chanel(){
+	Bsc::noise(this->data,1000);
 }
 
 void Menu::dataEncode(){
