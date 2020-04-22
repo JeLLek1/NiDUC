@@ -219,8 +219,11 @@ rsencode:	rsencode.o
 	echo "abcd" | ./$@ | perl -pe "s|a|b|" | ./$@ --decode | grep -q "abcd" >/dev/null
 
 #make main
+
+
+main.o:	CXXFLAGS += -I standalone -I djelic/Documentation/bch/standalone -I djelic/include
 main.o: main.cpp c++/ezpwd/rs c++/ezpwd/bch src/*.cpp
-main: main.o
+main: main.o djelic_bch.o
 	$(CXX) $(CXXFLAGS) -o $@ $^
 	
 # rsencode_9 -- correct lower 9 bits of 16-bit symbols (serialized big-endian)
