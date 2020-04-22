@@ -64,18 +64,18 @@ void Menu::showValuesByte(){
 		std::cout<<x<<" ";
 	}
 	std::cout<<"\nDane zakodowane rs: \n";
-	for(unsigned int i=0; i<data.size(); i++){
-		std::bitset<8> x(data.at(i));
+	for(unsigned int i=0; i<dataRs.size(); i++){
+		std::bitset<8> x(dataRs.at(i));
 		std::cout<<x<<" ";
 	}
 	std::cout<<"\nDane zakodowane bch: \n";
-	for(unsigned int i=0; i<data.size(); i++){
-		std::bitset<8> x(data.at(i));
+	for(unsigned int i=0; i<dataBch.size(); i++){
+		std::bitset<8> x(dataBch.at(i));
 		std::cout<<x<<" ";
 	}
 	std::cout<<"\nDane zakodowane kodem potrojeniowym: \n";
-	for(unsigned int i=0; i<data.size(); i++){
-		std::bitset<8> x(data.at(i));
+	for(unsigned int i=0; i<dataTripling.size(); i++){
+		std::bitset<8> x(dataTripling.at(i));
 		std::cout<<x<<" ";
 	}
 	std::cout<<"\n";
