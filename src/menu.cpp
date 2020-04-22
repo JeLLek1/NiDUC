@@ -42,6 +42,8 @@ void Menu::display(){
 
 	this->showValuesByte();
 
+	this->chanel();
+
 }
 
 void Menu::loadValues(){
