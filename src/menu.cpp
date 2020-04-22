@@ -41,6 +41,7 @@ void Menu::display(){
 	std::cout<<"Dane wprowadzone i zakodowane: \n";
 
 	this->showValuesByte();
+
 }
 
 void Menu::loadValues(){
@@ -51,6 +52,9 @@ void Menu::loadValues(){
 	dataRs.insert(dataRs.end(), data.begin(), data.end());
 	dataBch.insert(dataBch.end(), data.begin(), data.end());
 	dataTripling.insert(dataTripling.end(), data.begin(), data.end());
+}
+
+void Menu::chanel(){
 }
 
 void Menu::dataEncode(){

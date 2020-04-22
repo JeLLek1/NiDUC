@@ -16,6 +16,8 @@ public:
 	void display();
 	void loadValues();
 	void dataEncode();
+	
+	void chanel();
 
 	void showValuesByte();
 	~Menu();
