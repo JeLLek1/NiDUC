@@ -1,9 +1,14 @@
 #include "src/menu.cpp"
 int main()
 {
-   	Menu *menu = new Menu(); 
+	try{
 
-   	menu->display();
+	   	Menu *menu = new Menu(); 
 
-   	delete menu;
+	   	menu->display();
+
+	   	delete menu;
+   }catch(std::exception e){
+		std::cout<<e.what();
+	}
 }

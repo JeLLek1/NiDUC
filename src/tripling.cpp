@@ -39,3 +39,7 @@ void Tripling::encode(std::vector<uint8_t> &data){
 		}
 	}
 }
+
+void Tripling::decode(std::vector<uint8_t> &data){
+	
+}
