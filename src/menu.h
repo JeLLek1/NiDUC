@@ -1,6 +1,12 @@
 #include <vector>
 
+#include <ezpwd/rs>
+#include <ezpwd/bch>
 #include <iostream>
+
+#define MAXSYMBOLS 255
+#define	PARITYSYMBOLS 16
+#define BCHCAPACITY 2
 
 class Menu{
 public:
@@ -13,6 +19,11 @@ public:
 	std::vector<uint8_t> dataTriplingG;
 	int bscInPromils;
 	int symbols;
+	int prop1;
+	int prop2;
+
+	ezpwd::RS<MAXSYMBOLS, MAXSYMBOLS-PARITYSYMBOLS> rs;
+	ezpwd::BCH<MAXSYMBOLS,MAXSYMBOLS-PARITYSYMBOLS,BCHCAPACITY> bch;
 
 	Menu();
 	static int cinInt(int max);
