@@ -51,7 +51,7 @@ void Tripling::decode(std::vector<uint8_t> &data){
 		uint8_t bit1 = data[index]&bit;
 		if(bit1!=0){
 			count++;
-			data[index]-=bit1;
+			data[index]-=bit;
 		}
 
 		bit = 1;
@@ -59,7 +59,7 @@ void Tripling::decode(std::vector<uint8_t> &data){
 		index = (i*3+1)>>3;
 		if(bit1!=0){
 			count++;
-			data[index]-=bit1;
+			data[index]-=bit;
 		}
 
 		bit = 1;
@@ -68,10 +68,9 @@ void Tripling::decode(std::vector<uint8_t> &data){
 		bit1 = data[index]&bit;
 		if(bit1!=0){
 			count++;
-			data[index]-=bit1;
+			data[index]-=bit;
 		}
-
-		if(count>=3){
+		if(count>=2){
 			bit = 1;
 			bit<<=(7-(i%8));
 			index = i>>3;

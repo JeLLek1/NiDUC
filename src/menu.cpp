@@ -71,6 +71,8 @@ void Menu::display(){
 
 		this->chanel();
 
+		std::cout<<"kanal bsc: \n";
+
 		std::cout<<"\nDane zakodowane kodem bsh: \n";
 		this->showValuesByte(this->dataBch);
 		std::cout<<"\nDane zakodowane kodem rs: \n";
@@ -78,6 +80,14 @@ void Menu::display(){
 		std::cout<<"\nDane zakodowane kodem potrojeniowym: \n";
 		this->showValuesByte(this->dataTripling);
 
+		std::cout<<"\n\nkanal gilberta: \n";
+		std::cout<<"\nDane zdekodowane kodem bsh: \n";
+		this->showValuesByte(this->dataBchG);
+		std::cout<<"\nDane zdekodowane kodem rs: \n";
+		this->showValuesByte(this->dataRsG);
+		std::cout<<"\nDane zdekodowane kodem potrojeniowym: \n";
+		this->showValuesByte(this->dataTriplingG);
+		
 		std::cout<<"\n\n[Dekodowanie danych oraz odrzucanie nadmiarowych bitow..]\n\n";
 
 		this->dataDecode();
