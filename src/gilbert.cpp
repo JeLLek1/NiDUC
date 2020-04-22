@@ -15,13 +15,16 @@ void Gilbert::noiseG(std::vector<uint8_t> &data,int prop1,int prop2)
 				data[i] ^= bit;
 				isB=true;
 			}
-			else if((rand()%1000)<prop2)
+			else 
 			{
-				data[i] ^= bit;
-			}
-			else
-			{
-				isB=false;
+				if(isB==true&&(rand()%1000)<prop2)
+				{
+					data[i] ^= bit;
+				}
+				else
+				{
+					isB=false;
+				}
 			}
 			bit<<=1;
 		}
