@@ -10,7 +10,7 @@
 Menu::Menu(){
 	this->parity = 0;
 	this->symbols = 0;
-	
+
 }
 
 int Menu::cinInt(){
@@ -63,6 +63,22 @@ void Menu::showValuesByte(){
 		std::bitset<8> x(data.at(i));
 		std::cout<<x<<" ";
 	}
+	std::cout<<"\nDane zakodowane rs: \n";
+	for(unsigned int i=0; i<data.size(); i++){
+		std::bitset<8> x(data.at(i));
+		std::cout<<x<<" ";
+	}
+	std::cout<<"\nDane zakodowane bch: \n";
+	for(unsigned int i=0; i<data.size(); i++){
+		std::bitset<8> x(data.at(i));
+		std::cout<<x<<" ";
+	}
+	std::cout<<"\nDane zakodowane kodem potrojeniowym: \n";
+	for(unsigned int i=0; i<data.size(); i++){
+		std::bitset<8> x(data.at(i));
+		std::cout<<x<<" ";
+	}
+	std::cout<<"\n";
 }
 
 Menu::~Menu(){

@@ -6,6 +6,6 @@ void Tripling::encode(std::vector<uint8_t> data){
 		data.push_back(static_cast<uint8_t>(0));
 	}
 	for(int i=oldDataLength-1; i>=0; i--){
-		std::cout<<(char)data.at(i);
+		//std::cout<<(char)data.at(i);
 	}
 }
