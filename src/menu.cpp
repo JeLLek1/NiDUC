@@ -10,6 +10,7 @@
 Menu::Menu(){
 	this->parity = 0;
 	this->symbols = 0;
+	
 }
 
 int Menu::cinInt(){
