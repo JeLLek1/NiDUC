@@ -1,2 +1,4 @@
-﻿  NiDUC Projekt 1.cpp
-  NiDUC Projekt 1.vcxproj -> C:\Users\Szymon Komputer\Documents\GitHub\NiDUC\NiDUC_Projekt_1\x64\Debug\NiDUC Projekt 1.exe
+﻿  Menu.cpp
+  NiducMain.cpp
+  Generowanie kodu...
+LINK : fatal error LNK1104: nie mo┐na otworzyŠ pliku äpython38_d.libö
