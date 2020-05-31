@@ -36,5 +36,7 @@ public:
 
 	void showValuesByte(std::vector<uint8_t> &data);
 
+	void tests();
+	
 	~Menu();
 };

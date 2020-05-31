@@ -39,7 +39,7 @@ int Menu::cinInt(int max){
 }
 
 void Menu::display(){
-	std::cout<<"Uswawienia: \nMaksymalna ilość symboli: "<<MAXSYMBOLS<<"\nIlość symboli nadmiarowych: "<<PARITYSYMBOLS<<"\nmożliwość korekcyjna BSC: "<<BCHCAPACITY<<"\n";
+	std::cout<<"Ustawienia: \nMaksymalna ilość symboli: "<<MAXSYMBOLS<<"\nIlość symboli nadmiarowych: "<<PARITYSYMBOLS<<"\nmożliwość korekcyjna BSC: "<<BCHCAPACITY<<"\n";
 	
 		std::cout<<"Podaj ilość danych do przetestowania: ";
 
