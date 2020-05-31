@@ -2,7 +2,6 @@
 
 void Gilbert::noiseG(std::vector<uint8_t> &data,int prop1,int prop2)
 {
-	std::srand(time(nullptr));
 	bool isB=false;
 	for(unsigned int i=0; i<data.size();i++)
 	{

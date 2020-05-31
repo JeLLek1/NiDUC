@@ -12,6 +12,7 @@
 Menu::Menu(){
 	this->bscInPromils = 0;
 	this->symbols = 0;
+	std::srand(time(nullptr));
 
 }
 
@@ -41,9 +42,9 @@ int Menu::cinInt(int max){
 void Menu::display(){
 	std::cout<<"Uswawienia: \nMaksymalna ilość symboli: "<<CODE_N<<"\nDługosc slowa kodowego: "<<CODE_K<<"\nmozliwosc korekcyjna BSC: "<<CODE_T<<"\n";
 	
-		std::cout<<"Podaj ilość danych do przetestowania: ";
+		//std::cout<<"Podaj ilość danych do przetestowania: ";
 
-		this->symbols=this->cinInt(20000);
+		this->symbols=CODE_K;
 
 		std::cout<<"Podaj szanse na zmiane bitu w kanale BSC [promile]: ";
 		this->bscInPromils=this->cinInt(1000);
@@ -51,16 +52,9 @@ void Menu::display(){
 		this->prop1=this->cinInt(1000);
 		std::cout<<"Podaj szanse na zmiane bitu w kanale Gilberta (zla seria)[promile]: ";
 		this->prop2=this->cinInt(1000);
-
-		this->loadValues();
-
-		this->dataEncode();
-
-		this->channel();
-
-		this->dataDecode();
-
-		this->checkBer();
+		std::cout<<"Podaj ilość testów: ";
+		size_t testsNumber = this->cinInt(1000);
+		this->tests(testsNumber);
 }
 
 long Menu::errorCount(std::vector<uint8_t> dataTest){
@@ -88,13 +82,6 @@ userBer Menu::checkBer(){
 	ber.rsGil = static_cast<double>(this->errorCount(this->dataRsG))/dataLength;
 	ber.bchGil = static_cast<double>(this->errorCount(this->dataBchG))/dataLength;
 	ber.tripleGil = static_cast<double>(this->errorCount(this->dataTriplingG))/dataLength;
-
-	std::cout<<"\nBer: "<<ber.rsBsc<<" "<<this->errorCount(this->dataRs)<<"\n";
-	std::cout<<"\nBer: "<<ber.bchBsc<<" "<<this->errorCount(this->dataBch)<<"\n";
-	std::cout<<"\nBer: "<<ber.tripleBsc<<" "<<this->errorCount(this->dataTripling)<<"\n";
-	std::cout<<"\nBer: "<<ber.rsGil<<" "<<this->errorCount(this->dataRsG)<<"\n";
-	std::cout<<"\nBer: "<<ber.bchGil<<" "<<this->errorCount(this->dataBchG)<<"\n";
-	std::cout<<"\nBer: "<<ber.tripleGil<<" "<<this->errorCount(this->dataTriplingG)<<"\n";
 
 	return ber;
 }
@@ -134,6 +121,7 @@ void Menu::dataEncode(){
 
 void Menu::dataDecode(){
 
+
 	int size = rs.nroots();
 	rs.decode(dataRs);
 	rs.decode(dataRsG);
@@ -144,6 +132,7 @@ void Menu::dataDecode(){
 	size = bch.ecc_bytes();
 	bch.decode(dataBch);
 	dataBch.resize(dataBch.size()- size);
+
 	bch.decode(dataBchG);
 	dataBchG.resize(dataBchG.size()- size);
 
@@ -159,7 +148,7 @@ void Menu::showValuesByte(std::vector<uint8_t> &data){
 		std::cout<<x<<" ";
 	}
 }
-void Menu::tests(size_t number,int prop1,int prop2)
+void Menu::tests(size_t number)
 {
 	userBer ber;
 	ber.rsBsc=0;
@@ -168,17 +157,11 @@ void Menu::tests(size_t number,int prop1,int prop2)
 	ber.rsGil=0; 
 	ber.bchGil=0; 
 	ber.tripleGil=0;
+
+
+
 	for(unsigned int i=0;i<number;i++)
 	{
-		
-
-		this->symbols=this->cinInt(CODE_K);
-
-		this->bscInPromils=this->cinInt(prop1);
-
-		this->prop1=this->cinInt(prop1);
-
-		this->prop2=this->cinInt(prop2);
 
 		this->loadValues();
 
@@ -198,7 +181,7 @@ void Menu::tests(size_t number,int prop1,int prop2)
 	}
 	ber.rsBsc=ber.rsBsc/number;
 	ber.bchBsc=ber.bchBsc/number; 
-	ber.tripleBsc=ber.tripleBsc;
+	ber.tripleBsc=ber.tripleBsc/number;
 	ber.rsGil=ber.rsGil/number; 
 	ber.bchGil=ber.bchGil/number; 
 	ber.tripleGil=ber.tripleGil/number;
@@ -210,7 +193,7 @@ void Menu::tests(size_t number,int prop1,int prop2)
 	std::cout<<"Ber tripleGil: "<<ber.tripleGil<<'\n';
 	std::cout<<"Nadmiarowosc rs: "<<rs.nroots()<<'\n';
 	std::cout<<"Nadmiarowosc bch: "<<bch.ecc_bytes()<<'\n';
-	std::cout<<"Nadmiarowosc triple: "<<(data.size())*2<<'\n';
+	std::cout<<"Nadmiarowosc triple: "<<(this->symbols)*2<<'\n';
 
 }
 void Menu::clearVector()

@@ -4,7 +4,6 @@
 
 void Bsc::noise(std::vector<uint8_t> &data,int prop)
 {
-	std::srand(time(nullptr));
 	for(unsigned int i=0; i<data.size();i++)
 	{
 		uint8_t bit=1;
