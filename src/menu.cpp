@@ -205,6 +205,16 @@ void Menu::tests(size_t number,int prop1,int prop2)
 	ber.rsGil=ber.rsGil/number; 
 	ber.bchGil=ber.bchGil/number; 
 	ber.tripleGil=ber.tripleGil/number;
+	std::cout<<"Ber rsBsc: "<<ber.rsBsc<<'\n';
+	std::cout<<"Ber bchBsc: "<<ber.bchBsc<<'\n';
+	std::cout<<"Ber tripleBsc: "<<ber.tripleBsc<<'\n';
+	std::cout<<"Ber rsGil: "<<ber.rsGil<<'\n';
+	std::cout<<"Ber bchGil: "<<ber.bchGil<<'\n';
+	std::cout<<"Ber tripleGil: "<<ber.tripleGil<<'\n';
+	std::cout<<"Nadmiarowosc rs: "<<rs.nroots()<<'\n';
+	std::cout<<"Nadmiarowosc bch: "<<bch.ecc_bytes()<<'\n';
+	std::cout<<"Nadmiarowosc triple: "<<(data.size())*2<<'\n';
+
 }
 void Menu::clearVector()
 {
