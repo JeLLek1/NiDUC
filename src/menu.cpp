@@ -39,11 +39,11 @@ int Menu::cinInt(int max){
 }
 
 void Menu::display(){
-	std::cout<<"Uswawienia: \nMaksymalna ilość symboli: "<<MAXSYMBOLS<<"\nIlość symboli nadmiarowych: "<<PARITYSYMBOLS<<"\nmożliwość korekcyjna BSC: "<<BCHCAPACITY<<"\n";
+	std::cout<<"Uswawienia: \nMaksymalna ilość symboli: "<<CODE_N<<"\nDługosc slowa kodowego: "<<CODE_K<<"\nmozliwosc korekcyjna BSC: "<<CODE_T<<"\n";
 	
 		std::cout<<"Podaj ilość danych do przetestowania: ";
 
-		this->symbols=this->cinInt(MAXSYMBOLS-PARITYSYMBOLS);
+		this->symbols=this->cinInt(CODE_K);
 
 		std::cout<<"Podaj szanse na zmiane bitu w kanale BSC [promile]: ";
 		this->bscInPromils=this->cinInt(1000);
