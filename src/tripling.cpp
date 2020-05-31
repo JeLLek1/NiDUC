@@ -42,6 +42,8 @@ void Tripling::encode(std::vector<uint8_t> &data){
 
 void Tripling::decode(std::vector<uint8_t> &data){
 	unsigned int length=(data.size()<<3)/3;
+	std::cout<<"\n";
+	int xd = 0;
 	for(unsigned int i=0; i<length; i++){
 		int count = 0;
 
@@ -49,9 +51,16 @@ void Tripling::decode(std::vector<uint8_t> &data){
 		bit<<=(7-((3*i)%8));
 		size_t index = (i*3)>>3;
 		uint8_t bit1 = data[index]&bit;
+
+		std::cout<<"(";
+
 		if(bit1!=0){
 			count++;
 			data[index]-=bit;
+			std::cout<<"1";
+		}else{
+
+			std::cout<<"0";
 		}
 
 		bit = 1;
@@ -60,6 +69,10 @@ void Tripling::decode(std::vector<uint8_t> &data){
 		if(bit1!=0){
 			count++;
 			data[index]-=bit;
+			std::cout<<"1";
+		}else{
+
+			std::cout<<"0";
 		}
 
 		bit = 1;
@@ -69,13 +82,24 @@ void Tripling::decode(std::vector<uint8_t> &data){
 		if(bit1!=0){
 			count++;
 			data[index]-=bit;
+			std::cout<<"1";
+		}else{
+
+			std::cout<<"0";
 		}
+		std::cout<<")";
 		if(count>=2){
 			bit = 1;
 			bit<<=(7-(i%8));
 			index = i>>3;
 			data[index]+=bit;
 		}
+		std::cout<<count;
+		xd++;
+		if(xd%8==0){
+			std::cout<<" ";
+		}
 	}
+	std::cout<<"\n";
 	data.resize((data.size()/3));
 }

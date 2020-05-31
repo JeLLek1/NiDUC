@@ -39,8 +39,36 @@ int Menu::cinInt(int max){
 }
 
 void Menu::display(){
+	std::cout<<"Uswawienia: \nMaksymalna ilość symboli: "<<CODE_N<<"\nDługosc slowa kodowego: "<<CODE_K<<"\nmozliwosc korekcyjna BSC: "<<CODE_T<<"\n";
+	
+		std::cout<<"Podaj ilość danych do przetestowania: ";
 
+		this->symbols=this->cinInt(CODE_K);
 
+		std::cout<<"Podaj szanse na zmiane bitu w kanale BSC [promile]: ";
+		this->bscInPromils=this->cinInt(1000);
+		std::cout<<"Podaj szanse na zmiane bitu w kanale Gilberta (dobra seria)[promile]: ";
+		this->prop1=this->cinInt(1000);
+		std::cout<<"Podaj szanse na zmiane bitu w kanale Gilberta (zla seria)[promile]: ";
+		this->prop2=this->cinInt(1000);
+
+		this->loadValues();
+
+		this->dataEncode();
+		std::cout<<"\n";
+		this->showValuesByte(this->data);
+		std::cout<<"\n";
+		this->showValuesByte(this->dataTripling);
+		std::cout<<"\n";
+		this->channel();
+		this->showValuesByte(this->dataTripling);
+		std::cout<<"\n";
+
+		this->dataDecode();
+		this->showValuesByte(this->dataTripling);
+		std::cout<<"\n";
+
+		this->checkBer();
 }
 
 long Menu::errorCount(std::vector<uint8_t> dataTest){
@@ -62,14 +90,14 @@ long Menu::errorCount(std::vector<uint8_t> dataTest){
 userBer Menu::checkBer(){
 	size_t dataLength = this->data.size()*8;
 	userBer ber;
-	ber.rsBsc = this->errorCount(this->dataRs)/dataLength;
-	ber.bchBsc = this->errorCount(this->dataBch)/dataLength;
-	ber.tripleBsc = this->errorCount(this->dataTripling)/dataLength;
-	ber.rsGil = this->errorCount(this->dataRsG)/dataLength;
-	ber.bchGil = this->errorCount(this->dataBchG)/dataLength;
-	ber.tripleGil = this->errorCount(this->dataTriplingG)/dataLength;
+	ber.rsBsc = static_cast<double>(this->errorCount(this->dataRs))/dataLength;
+	ber.bchBsc = static_cast<double>(this->errorCount(this->dataBch))/dataLength;
+	ber.tripleBsc = static_cast<double>(this->errorCount(this->dataTripling))/dataLength;
+	ber.rsGil = static_cast<double>(this->errorCount(this->dataRsG))/dataLength;
+	ber.bchGil = static_cast<double>(this->errorCount(this->dataBchG))/dataLength;
+	ber.tripleGil = static_cast<double>(this->errorCount(this->dataTriplingG))/dataLength;
 
-
+	std::cout<<"\nBer: "<<ber.tripleBsc<<" "<<this->errorCount(this->dataTripling)<<"\n";
 
 	return ber;
 }
@@ -124,7 +152,7 @@ void Menu::dataDecode(){
 
 	Tripling::decode(dataTripling);
 
-	Tripling::decode(dataTriplingG);
+	//Tripling::decode(dataTriplingG);
 }
 
 void Menu::showValuesByte(std::vector<uint8_t> &data){
@@ -134,7 +162,7 @@ void Menu::showValuesByte(std::vector<uint8_t> &data){
 		std::cout<<x<<" ";
 	}
 }
-void Menu::tests(int number,int prop1,int prop2)
+void Menu::tests(size_t number,int prop1,int prop2)
 {
 	userBer ber;
 	ber.rsBsc=0;
@@ -174,13 +202,13 @@ void Menu::tests(int number,int prop1,int prop2)
 }
 void Menu::clearVector()
 {
-	this->data->clear();
-	this->dataRs->clear();
-	this->dataBch->clear();
-	this->dataTripling->clear();
-	this->dataRsG->clear();
-	this->dataBchG->clear();
-	this->dataTriplingG->clear();
+	this->data.clear();
+	this->dataRs.clear();
+	this->dataBch.clear();
+	this->dataTripling.clear();
+	this->dataRsG.clear();
+	this->dataBchG.clear();
+	this->dataTriplingG.clear();
 }
 
 Menu::~Menu(){

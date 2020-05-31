@@ -9,7 +9,7 @@
 #define CODE_T 4     //t - korekcja
 
 struct userBer{
-	long rsBsc, bchBsc, tripleBsc, rsGil, bchGil, tripleGil;
+	double rsBsc, bchBsc, tripleBsc, rsGil, bchGil, tripleGil;
 };
 
 class Menu{
@@ -38,11 +38,13 @@ public:
 	long errorCount(std::vector<uint8_t> dataTest);
 	userBer checkBer();
 
-	void chanel();
+	void channel();
 
 	void showValuesByte(std::vector<uint8_t> &data);
 
-	void tests(int number,int prop1,int prop2);
+	void tests(size_t number,int prop1,int prop2);
+
+	void clearVector();
 	
 	~Menu();
 };
