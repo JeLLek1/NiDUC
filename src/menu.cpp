@@ -39,9 +39,17 @@ int Menu::cinInt(int max){
 }
 
 void Menu::display(){
-
+	userBer ber;
+	ber.rsBsc=0;
+	ber.bchBsc=0; 
+	ber.tripleBsc=0;
+	ber.rsGil=0; 
+	ber.bchGil=0; 
+	ber.tripleGil=0;
 	for(int i=0;i<TESTNUM;i++)
 	{
+		
+
 		this->symbols=this->cinInt(CODE_K);
 
 		this->bscInPromils=this->cinInt(PROMILE);
@@ -57,7 +65,14 @@ void Menu::display(){
 		this->chanel();
 
 		this->dataDecode();
-
+		userBer temp=this->checkBer();
+		ber.rsBsc+=temp.rsBsc;
+		ber.bchBsc+=temp.bchBsc; 
+		ber.tripleBsc+=temp.tripleBsc;
+		ber.rsGil+=temp.rsGil; 
+		ber.bchGil+=temp.bchGil; 
+		ber.tripleGil+=temp.tripleGil;
+		this->clearVector();
 	}
 
 }
