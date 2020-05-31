@@ -4,9 +4,9 @@
 #include <ezpwd/bch>
 #include <iostream>
 
-#define CODE_N 255   //n - slowo kodowe
-#define	CODE_K 223   //k - blok danych zakodowanych
-#define CODE_T 4     //t - korekcja
+#define CODE_N 255  //n - slowo kodowe
+#define	CODE_K 179   //k - blok danych zakodowanych
+#define CODE_T 10   //t - korekcja
 
 struct userBer{
 	double rsBsc, bchBsc, tripleBsc, rsGil, bchGil, tripleGil;
