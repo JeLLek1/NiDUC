@@ -62,6 +62,37 @@ void Menu::display(){
 
 }
 
+long Menu::errorCount(std::vector<uint8_t> dataTest){
+	long counter = 0;
+
+	for(size_t i = 0; i<dataTest.size(); i++){
+		uint8_t test = dataTest[i]^this->data[i];
+		while(test>0){
+			if(test%2==1){
+				counter++;
+			}
+			test>>=1;
+		}
+	}
+
+	return counter;
+}
+
+userBer Menu::checkBer(){
+	size_t dataLength = this->data.size()*8;
+	userBer ber;
+	ber.rsBsc = this->errorCount(this->dataRs)/dataLength;
+	ber.bchBsc = this->errorCount(this->dataBch)/dataLength;
+	ber.tripleBsc = this->errorCount(this->dataTripling)/dataLength;
+	ber.rsGil = this->errorCount(this->dataRsG)/dataLength;
+	ber.bchGil = this->errorCount(this->dataBchG)/dataLength;
+	ber.tripleGil = this->errorCount(this->dataTriplingG)/dataLength;
+
+
+
+	return ber;
+}
+
 void Menu::loadValues(){
 	std::srand(time(nullptr));
 	for(int i=0; i<this->symbols; i++){

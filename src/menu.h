@@ -8,6 +8,10 @@
 #define	CODE_K 223   //k - blok danych zakodowanych
 #define CODE_T 4     //t - korekcja
 
+struct userBer{
+	long rsBsc, bchBsc, tripleBsc, rsGil, bchGil, tripleGil;
+};
+
 class Menu{
 public:
 	std::vector<uint8_t> data;
@@ -31,7 +35,9 @@ public:
 	void loadValues();
 	void dataEncode();
 	void dataDecode();
-	
+	long errorCount(std::vector<uint8_t> dataTest);
+	userBer checkBer();
+
 	void chanel();
 
 	void showValuesByte(std::vector<uint8_t> &data);
