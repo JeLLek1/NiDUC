@@ -40,77 +40,26 @@ int Menu::cinInt(int max){
 
 void Menu::display(){
 
-		std::cout<<"Uswawienia: \nMaksymalna ilość symboli: "<<CODE_N<<"\nDługosc slowa kodowego: "<<CODE_K<<"\nmozliwosc korekcyjna BSC: "<<CODE_T<<"\n";
-
-	
-		std::cout<<"Podaj ilość danych do przetestowania: ";
-
+	for(int i=0;i<TESTNUM;i++)
+	{
 		this->symbols=this->cinInt(CODE_K);
 
-		std::cout<<"Podaj szanse na zmiane bitu w kanale BSC [promile]: ";
-		this->bscInPromils=this->cinInt(1000);
-		std::cout<<"Podaj szanse na zmiane bitu w kanale Gilberta (dobra seria)[promile]: ";
-		this->prop1=this->cinInt(1000);
-		std::cout<<"Podaj szanse na zmiane bitu w kanale Gilberta (zla seria)[promile]: ";
-		this->prop2=this->cinInt(1000);
+		this->bscInPromils=this->cinInt(PROMILE);
+
+		this->prop1=this->cinInt(PROMILE);
+
+		this->prop2=this->cinInt(PROMILE);
 
 		this->loadValues();
 
 		this->dataEncode();
 
-		std::cout<<"Dane wprowadzone i zakodowane: \n";
-
-		std::cout<<"Dane przed zakodowaniem: \n";
-		this->showValuesByte(this->data);
-		std::cout<<"\nDane zakodowane kodem bsh: \n";
-		this->showValuesByte(this->dataBch);
-		std::cout<<"\nDane zakodowane kodem rs: \n";
-		this->showValuesByte(this->dataRs);
-		std::cout<<"\nDane zakodowane kodem potrojeniowym: \n";
-		this->showValuesByte(this->dataTripling);
-
-		std::cout<<"\n\n[Przesyłanie kanałem transmisyjnym...]: \n\n";
-
 		this->chanel();
-
-		std::cout<<"kanal bsc: \n";
-
-		std::cout<<"\nDane zakodowane kodem bsh: \n";
-		this->showValuesByte(this->dataBch);
-		std::cout<<"\nDane zakodowane kodem rs: \n";
-		this->showValuesByte(this->dataRs);
-		std::cout<<"\nDane zakodowane kodem potrojeniowym: \n";
-		this->showValuesByte(this->dataTripling);
-
-		std::cout<<"\n\nkanal gilberta: \n";
-		std::cout<<"\nDane zdekodowane kodem bsh: \n";
-		this->showValuesByte(this->dataBchG);
-		std::cout<<"\nDane zdekodowane kodem rs: \n";
-		this->showValuesByte(this->dataRsG);
-		std::cout<<"\nDane zdekodowane kodem potrojeniowym: \n";
-		this->showValuesByte(this->dataTriplingG);
-		
-		std::cout<<"\n\n[Dekodowanie danych oraz odrzucanie nadmiarowych bitow..]\n\n";
 
 		this->dataDecode();
 
-		std::cout<<"kanal bsc: \n";
-		std::cout<<"\nDane zdekodowane kodem bsh: \n";
-		this->showValuesByte(this->dataBch);
-		std::cout<<"\nDane zdekodowane kodem rs: \n";
-		this->showValuesByte(this->dataRs);
-		std::cout<<"\nDane zdekodowane kodem potrojeniowym: \n";
-		this->showValuesByte(this->dataTripling);
+	}
 
-
-		std::cout<<"\n\nkanal gilberta: \n";
-		std::cout<<"\nDane zdekodowane kodem bsh: \n";
-		this->showValuesByte(this->dataBchG);
-		std::cout<<"\nDane zdekodowane kodem rs: \n";
-		this->showValuesByte(this->dataRsG);
-		std::cout<<"\nDane zdekodowane kodem potrojeniowym: \n";
-		this->showValuesByte(this->dataTriplingG);
-		std::cout<<"\n";
 }
 
 void Menu::loadValues(){
@@ -172,6 +121,23 @@ void Menu::showValuesByte(std::vector<uint8_t> &data){
 		std::bitset<8> x(data.at(i));
 		std::cout<<x<<" ";
 	}
+}
+void Menu::tests(int number)
+{
+	for(unsigned int i=0; i<number;i++)
+	{
+		=
+	}
+}
+void Menu::clearVector()
+{
+	this->data->clear();
+	this->dataRs->clear();
+	this->dataBch->clear();
+	this->dataTripling->clear();
+	this->dataRsG->clear();
+	this->dataBchG->clear();
+	this->dataTriplingG->clear();
 }
 
 Menu::~Menu(){
