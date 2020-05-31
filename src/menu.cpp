@@ -84,7 +84,7 @@ void Menu::loadValues(){
 	dataTripling.insert(dataTripling.end(), data.begin(), data.end());
 }
 
-void Menu::chanel(){
+void Menu::channel(){
 	dataRsG.insert(dataRsG.end(), dataRs.begin(), dataRs.end());
 	dataBchG.insert(dataBchG.end(), dataBch.begin(), dataBch.end());
 	dataTriplingG.insert(dataTriplingG.end(), dataTripling.begin(), dataTripling.end());
@@ -134,7 +134,7 @@ void Menu::showValuesByte(std::vector<uint8_t> &data){
 		std::cout<<x<<" ";
 	}
 }
-void Menu::tests(int number)
+void Menu::tests(int number,int prop1,int prop2)
 {
 	userBer ber;
 	ber.rsBsc=0;
@@ -143,23 +143,23 @@ void Menu::tests(int number)
 	ber.rsGil=0; 
 	ber.bchGil=0; 
 	ber.tripleGil=0;
-	for(unsigned int i=0;i<TESTNUM;i++)
+	for(unsigned int i=0;i<number;i++)
 	{
 		
 
 		this->symbols=this->cinInt(CODE_K);
 
-		this->bscInPromils=this->cinInt(PROMILE);
+		this->bscInPromils=this->cinInt(prop1);
 
-		this->prop1=this->cinInt(PROMILE);
+		this->prop1=this->cinInt(prop1);
 
-		this->prop2=this->cinInt(PROMILE);
+		this->prop2=this->cinInt(prop2);
 
 		this->loadValues();
 
 		this->dataEncode();
 
-		this->chanel();
+		this->channel();
 
 		this->dataDecode();
 		userBer temp=this->checkBer();

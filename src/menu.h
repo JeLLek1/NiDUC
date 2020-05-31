@@ -42,7 +42,7 @@ public:
 
 	void showValuesByte(std::vector<uint8_t> &data);
 
-	void tests(int number);
+	void tests(int number,int prop1,int prop2);
 	
 	~Menu();
 };
