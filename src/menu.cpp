@@ -199,6 +199,12 @@ void Menu::tests(size_t number,int prop1,int prop2)
 		ber.tripleGil+=temp.tripleGil;
 		this->clearVector();
 	}
+	ber.rsBsc=ber.rsBsc/number;
+	ber.bchBsc=ber.bchBsc/number; 
+	ber.tripleBsc=ber.tripleBsc;
+	ber.rsGil=ber.rsGil/number; 
+	ber.bchGil=ber.bchGil/number; 
+	ber.tripleGil=ber.tripleGil/number;
 }
 void Menu::clearVector()
 {
