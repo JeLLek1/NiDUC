@@ -4,9 +4,9 @@
 #include <ezpwd/bch>
 #include <iostream>
 
-#define MAXSYMBOLS 255
-#define	PARITYSYMBOLS 16
-#define BCHCAPACITY 2
+#define CODE_N 255   //n - slowo kodowe
+#define	CODE_K 223   //k - blok danych zakodowanych
+#define CODE_T 4     //t - korekcja
 
 class Menu{
 public:
@@ -22,8 +22,8 @@ public:
 	int prop1;
 	int prop2;
 
-	ezpwd::RS<MAXSYMBOLS, MAXSYMBOLS-PARITYSYMBOLS> rs;
-	ezpwd::BCH<MAXSYMBOLS,MAXSYMBOLS-PARITYSYMBOLS,BCHCAPACITY> bch;
+	ezpwd::RS<CODE_N, CODE_K> rs;
+	ezpwd::BCH<CODE_N,CODE_K,CODE_T> bch;
 
 	Menu();
 	static int cinInt(int max);
