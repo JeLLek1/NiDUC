@@ -39,41 +39,7 @@ int Menu::cinInt(int max){
 }
 
 void Menu::display(){
-	userBer ber;
-	ber.rsBsc=0;
-	ber.bchBsc=0; 
-	ber.tripleBsc=0;
-	ber.rsGil=0; 
-	ber.bchGil=0; 
-	ber.tripleGil=0;
-	for(int i=0;i<TESTNUM;i++)
-	{
-		
 
-		this->symbols=this->cinInt(CODE_K);
-
-		this->bscInPromils=this->cinInt(PROMILE);
-
-		this->prop1=this->cinInt(PROMILE);
-
-		this->prop2=this->cinInt(PROMILE);
-
-		this->loadValues();
-
-		this->dataEncode();
-
-		this->chanel();
-
-		this->dataDecode();
-		userBer temp=this->checkBer();
-		ber.rsBsc+=temp.rsBsc;
-		ber.bchBsc+=temp.bchBsc; 
-		ber.tripleBsc+=temp.tripleBsc;
-		ber.rsGil+=temp.rsGil; 
-		ber.bchGil+=temp.bchGil; 
-		ber.tripleGil+=temp.tripleGil;
-		this->clearVector();
-	}
 
 }
 
@@ -170,9 +136,40 @@ void Menu::showValuesByte(std::vector<uint8_t> &data){
 }
 void Menu::tests(int number)
 {
-	for(unsigned int i=0; i<number;i++)
+	userBer ber;
+	ber.rsBsc=0;
+	ber.bchBsc=0; 
+	ber.tripleBsc=0;
+	ber.rsGil=0; 
+	ber.bchGil=0; 
+	ber.tripleGil=0;
+	for(unsigned int i=0;i<TESTNUM;i++)
 	{
-		=
+		
+
+		this->symbols=this->cinInt(CODE_K);
+
+		this->bscInPromils=this->cinInt(PROMILE);
+
+		this->prop1=this->cinInt(PROMILE);
+
+		this->prop2=this->cinInt(PROMILE);
+
+		this->loadValues();
+
+		this->dataEncode();
+
+		this->chanel();
+
+		this->dataDecode();
+		userBer temp=this->checkBer();
+		ber.rsBsc+=temp.rsBsc;
+		ber.bchBsc+=temp.bchBsc; 
+		ber.tripleBsc+=temp.tripleBsc;
+		ber.rsGil+=temp.rsGil; 
+		ber.bchGil+=temp.bchGil; 
+		ber.tripleGil+=temp.tripleGil;
+		this->clearVector();
 	}
 }
 void Menu::clearVector()
