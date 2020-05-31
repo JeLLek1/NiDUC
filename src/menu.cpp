@@ -43,7 +43,7 @@ void Menu::display(){
 	
 		std::cout<<"Podaj ilość danych do przetestowania: ";
 
-		this->symbols=this->cinInt(CODE_K);
+		this->symbols=this->cinInt(20000);
 
 		std::cout<<"Podaj szanse na zmiane bitu w kanale BSC [promile]: ";
 		this->bscInPromils=this->cinInt(1000);
@@ -55,18 +55,10 @@ void Menu::display(){
 		this->loadValues();
 
 		this->dataEncode();
-		std::cout<<"\n";
-		this->showValuesByte(this->data);
-		std::cout<<"\n";
-		this->showValuesByte(this->dataTripling);
-		std::cout<<"\n";
+
 		this->channel();
-		this->showValuesByte(this->dataTripling);
-		std::cout<<"\n";
 
 		this->dataDecode();
-		this->showValuesByte(this->dataTripling);
-		std::cout<<"\n";
 
 		this->checkBer();
 }
@@ -97,7 +89,12 @@ userBer Menu::checkBer(){
 	ber.bchGil = static_cast<double>(this->errorCount(this->dataBchG))/dataLength;
 	ber.tripleGil = static_cast<double>(this->errorCount(this->dataTriplingG))/dataLength;
 
+	std::cout<<"\nBer: "<<ber.rsBsc<<" "<<this->errorCount(this->dataRs)<<"\n";
+	std::cout<<"\nBer: "<<ber.bchBsc<<" "<<this->errorCount(this->dataBch)<<"\n";
 	std::cout<<"\nBer: "<<ber.tripleBsc<<" "<<this->errorCount(this->dataTripling)<<"\n";
+	std::cout<<"\nBer: "<<ber.rsGil<<" "<<this->errorCount(this->dataRsG)<<"\n";
+	std::cout<<"\nBer: "<<ber.bchGil<<" "<<this->errorCount(this->dataBchG)<<"\n";
+	std::cout<<"\nBer: "<<ber.tripleGil<<" "<<this->errorCount(this->dataTriplingG)<<"\n";
 
 	return ber;
 }
@@ -152,7 +149,7 @@ void Menu::dataDecode(){
 
 	Tripling::decode(dataTripling);
 
-	//Tripling::decode(dataTriplingG);
+	Tripling::decode(dataTriplingG);
 }
 
 void Menu::showValuesByte(std::vector<uint8_t> &data){
