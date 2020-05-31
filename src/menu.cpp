@@ -55,60 +55,20 @@ void Menu::display(){
 		this->loadValues();
 
 		this->dataEncode();
-
-		std::cout<<"Dane wprowadzone i zakodowane: \n";
-
-		std::cout<<"Dane przed zakodowaniem: \n";
+		std::cout<<"\n";
 		this->showValuesByte(this->data);
-		std::cout<<"\nDane zakodowane kodem bsh: \n";
-		this->showValuesByte(this->dataBch);
-		std::cout<<"\nDane zakodowane kodem rs: \n";
-		this->showValuesByte(this->dataRs);
-		std::cout<<"\nDane zakodowane kodem potrojeniowym: \n";
+		std::cout<<"\n";
 		this->showValuesByte(this->dataTripling);
-
-		std::cout<<"\n\n[Przesyłanie kanałem transmisyjnym...]: \n\n";
-
+		std::cout<<"\n";
 		this->chanel();
-
-		std::cout<<"kanal bsc: \n";
-
-		std::cout<<"\nDane zakodowane kodem bsh: \n";
-		this->showValuesByte(this->dataBch);
-		std::cout<<"\nDane zakodowane kodem rs: \n";
-		this->showValuesByte(this->dataRs);
-		std::cout<<"\nDane zakodowane kodem potrojeniowym: \n";
 		this->showValuesByte(this->dataTripling);
-
-		std::cout<<"\n\nkanal gilberta: \n";
-		std::cout<<"\nDane zdekodowane kodem bsh: \n";
-		this->showValuesByte(this->dataBchG);
-		std::cout<<"\nDane zdekodowane kodem rs: \n";
-		this->showValuesByte(this->dataRsG);
-		std::cout<<"\nDane zdekodowane kodem potrojeniowym: \n";
-		this->showValuesByte(this->dataTriplingG);
-		
-		std::cout<<"\n\n[Dekodowanie danych oraz odrzucanie nadmiarowych bitow..]\n\n";
+		std::cout<<"\n";
 
 		this->dataDecode();
-
-		std::cout<<"kanal bsc: \n";
-		std::cout<<"\nDane zdekodowane kodem bsh: \n";
-		this->showValuesByte(this->dataBch);
-		std::cout<<"\nDane zdekodowane kodem rs: \n";
-		this->showValuesByte(this->dataRs);
-		std::cout<<"\nDane zdekodowane kodem potrojeniowym: \n";
 		this->showValuesByte(this->dataTripling);
-
-
-		std::cout<<"\n\nkanal gilberta: \n";
-		std::cout<<"\nDane zdekodowane kodem bsh: \n";
-		this->showValuesByte(this->dataBchG);
-		std::cout<<"\nDane zdekodowane kodem rs: \n";
-		this->showValuesByte(this->dataRsG);
-		std::cout<<"\nDane zdekodowane kodem potrojeniowym: \n";
-		this->showValuesByte(this->dataTriplingG);
 		std::cout<<"\n";
+
+		this->checkBer();
 }
 
 long Menu::errorCount(std::vector<uint8_t> dataTest){
@@ -130,14 +90,14 @@ long Menu::errorCount(std::vector<uint8_t> dataTest){
 userBer Menu::checkBer(){
 	size_t dataLength = this->data.size()*8;
 	userBer ber;
-	ber.rsBsc = this->errorCount(this->dataRs)/dataLength;
-	ber.bchBsc = this->errorCount(this->dataBch)/dataLength;
-	ber.tripleBsc = this->errorCount(this->dataTripling)/dataLength;
-	ber.rsGil = this->errorCount(this->dataRsG)/dataLength;
-	ber.bchGil = this->errorCount(this->dataBchG)/dataLength;
-	ber.tripleGil = this->errorCount(this->dataTriplingG)/dataLength;
+	ber.rsBsc = static_cast<double>(this->errorCount(this->dataRs))/dataLength;
+	ber.bchBsc = static_cast<double>(this->errorCount(this->dataBch))/dataLength;
+	ber.tripleBsc = static_cast<double>(this->errorCount(this->dataTripling))/dataLength;
+	ber.rsGil = static_cast<double>(this->errorCount(this->dataRsG))/dataLength;
+	ber.bchGil = static_cast<double>(this->errorCount(this->dataBchG))/dataLength;
+	ber.tripleGil = static_cast<double>(this->errorCount(this->dataTriplingG))/dataLength;
 
-
+	std::cout<<"\nBer: "<<ber.tripleBsc<<" "<<this->errorCount(this->dataTripling)<<"\n";
 
 	return ber;
 }
@@ -192,7 +152,7 @@ void Menu::dataDecode(){
 
 	Tripling::decode(dataTripling);
 
-	Tripling::decode(dataTriplingG);
+	//Tripling::decode(dataTriplingG);
 }
 
 void Menu::showValuesByte(std::vector<uint8_t> &data){

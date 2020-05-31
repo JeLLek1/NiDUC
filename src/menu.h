@@ -9,7 +9,7 @@
 #define CODE_T 4     //t - korekcja
 
 struct userBer{
-	long rsBsc, bchBsc, tripleBsc, rsGil, bchGil, tripleGil;
+	double rsBsc, bchBsc, tripleBsc, rsGil, bchGil, tripleGil;
 };
 
 class Menu{
