@@ -40,11 +40,11 @@ int Menu::cinInt(int max){
 }
 
 void Menu::display(){
-	std::cout<<"Uswawienia: \nMaksymalna ilość symboli: "<<CODE_N<<"\nDługosc slowa kodowego: "<<CODE_K<<"\nmozliwosc korekcyjna BSC: "<<CODE_T<<"\n";
+	std::cout<<"Uswawienia: \n "<<CODE_N<<"\nDługosc slowa kodowego: "<<CODE_K<<"\nmozliwosc korekcyjna BSC: "<<CODE_T<<"\n";
 	
 		//std::cout<<"Podaj ilość danych do przetestowania: ";
 
-		this->symbols=CODE_K;
+		this->symbols=CODE_K/8;
 
 		std::cout<<"Podaj szanse na zmiane bitu w kanale BSC [promile]: ";
 		this->bscInPromils=this->cinInt(1000);

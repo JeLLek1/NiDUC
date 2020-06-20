@@ -220,7 +220,6 @@ rsencode:	rsencode.o
 
 #make main
 
-
 main.o:	CXXFLAGS += -I standalone -I djelic/Documentation/bch/standalone -I djelic/include
 main.o: main.cpp c++/ezpwd/rs c++/ezpwd/bch src/*.cpp
 main: main.o djelic_bch.o
