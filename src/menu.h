@@ -5,8 +5,8 @@
 #include <iostream>
 
 #define CODE_N 255	//n - slowo kodowe
-#define	CODE_K 239	//k - blok danych zakodowanych
-#define CODE_T 2   	//t - korekcja
+#define	CODE_K 79	//k - blok danych zakodowanych
+#define CODE_T 27   	//t - korekcja
 
 struct userBer{
 	double rsBsc, bchBsc, tripleBsc, rsGil, bchGil, tripleGil;
