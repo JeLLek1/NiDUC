@@ -87,7 +87,7 @@ userBer Menu::checkBer(){
 }
 
 void Menu::loadValues(){
-	std::srand(time(nullptr));
+
 	for(int i=0; i<this->symbols; i++){
 		this->data.push_back(static_cast<uint8_t>(std::rand()%256));
 	}

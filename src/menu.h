@@ -26,7 +26,7 @@ public:
 	int prop1;
 	int prop2;
 
-	ezpwd::RS<CODE_N, CODE_K> rs;
+	ezpwd::RS<CODE_N, CODE_N-CODE_T> rs;
 	ezpwd::BCH<CODE_N,CODE_K,CODE_T> bch;
 
 	Menu();
