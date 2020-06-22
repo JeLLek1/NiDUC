@@ -40,7 +40,7 @@ int Menu::cinInt(int max){
 }
 
 void Menu::display(){
-	std::cout<<"Uswawienia: \n "<<CODE_N<<"\nDługosc slowa kodowego: "<<CODE_K<<"\nmozliwosc korekcyjna BSC: "<<CODE_T<<"\n";
+	std::cout<<"Uswawienia:\nDlugosc slowa kodowego: "<<CODE_N<<"\nDlugosc danych do zakodowania: "<<CODE_K<<"\nmozliwosc korekcyjna BSC: "<<CODE_T<<"\n";
 	
 		//std::cout<<"Podaj ilość danych do przetestowania: ";
 
